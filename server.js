@@ -32,11 +32,11 @@ wsServer.on('connection', function (client) {
   wsServer.clients.forEach(r => {
     r.send(STR.join(''));
   }) 
-  
+
   client.on('close', () => {
     console.log('close')
   });
 
 });
 
-server.listen(3000)
+server.listen(28583)
