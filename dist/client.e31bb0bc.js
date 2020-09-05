@@ -28292,8 +28292,255 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var keys = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '😀', '😃', '😆', '😉', '😶', '🙄'], ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '😊', '😋', '😎', '🤩', '😏'], ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '🤔', '😍', '😘', '🤗', '🤨'], ['z', 'x', 'c', 'v', 'b', 'n', 'm', '?', '!', '😍', '😘', '🤗', '🤨', '😑'], ['😯', '😴', '😜', '🤤', '😒', '😖', '🤯', '😬', '😱', '😳', '🤪', '😡', '😇']];
-var _default = keys;
+var characters = [{
+  char: '1',
+  type: 0
+}, {
+  char: '2',
+  type: 0
+}, {
+  char: '3',
+  type: 0
+}, {
+  char: '4',
+  type: 0
+}, {
+  char: '5',
+  type: 0
+}, {
+  char: '6',
+  type: 0
+}, {
+  char: '7',
+  type: 0
+}, {
+  char: '8',
+  type: 0
+}, {
+  char: '9',
+  type: 0
+}, {
+  char: '0',
+  type: 0
+}, {
+  char: 'q',
+  type: 0
+}, {
+  char: 'w',
+  type: 0
+}, {
+  char: 'e',
+  type: 0
+}, {
+  char: 'r',
+  type: 0
+}, {
+  char: 't',
+  type: 0
+}, {
+  char: 'y',
+  type: 0
+}, {
+  char: 'u',
+  type: 0
+}, {
+  char: 'i',
+  type: 0
+}, {
+  char: 'o',
+  type: 0
+}, {
+  char: 'p',
+  type: 0
+}, {
+  char: 'a',
+  type: 0
+}, {
+  char: 's',
+  type: 0
+}, {
+  char: 'd',
+  type: 0
+}, {
+  char: 'f',
+  type: 0
+}, {
+  char: 'g',
+  type: 0
+}, {
+  char: 'h',
+  type: 0
+}, {
+  char: 'j',
+  type: 0
+}, {
+  char: 'k',
+  type: 0
+}, {
+  char: 'l',
+  type: 0
+}, {
+  char: '😀',
+  type: 1
+}, {
+  char: 'z',
+  type: 0
+}, {
+  char: 'x',
+  type: 0
+}, {
+  char: 'c',
+  type: 0
+}, {
+  char: 'v',
+  type: 0
+}, {
+  char: 'b',
+  type: 0
+}, {
+  char: 'n',
+  type: 0
+}, {
+  char: 'm',
+  type: 0
+}, {
+  char: '?',
+  type: 0
+}, {
+  char: '!',
+  type: 0
+}, {
+  char: '.',
+  type: 0
+}, {
+  char: ' ',
+  type: 0
+}];
+var emojis = [{
+  char: '😀',
+  type: 0
+}, {
+  char: '😉',
+  type: 0
+}, {
+  char: '🙄',
+  type: 0
+}, {
+  char: '😊',
+  type: 0
+}, {
+  char: '😋',
+  type: 0
+}, {
+  char: '😎',
+  type: 0
+}, {
+  char: '🤩',
+  type: 0
+}, {
+  char: '🤔',
+  type: 0
+}, {
+  char: '🤗',
+  type: 0
+}, {
+  char: '🤨',
+  type: 0
+}, {
+  char: '😍',
+  type: 0
+}, {
+  char: '😘',
+  type: 0
+}, {
+  char: '😯',
+  type: 0
+}, {
+  char: '😴',
+  type: 0
+}, {
+  char: '😜',
+  type: 0
+}, {
+  char: '🤤',
+  type: 0
+}, {
+  char: '😒',
+  type: 0
+}, {
+  char: '😖',
+  type: 0
+}, {
+  char: '🤯',
+  type: 0
+}, {
+  char: '😬',
+  type: 0
+}, {
+  char: '😱',
+  type: 0
+}, {
+  char: '😳',
+  type: 0
+}, {
+  char: '🤪',
+  type: 0
+}, {
+  char: '😡',
+  type: 0
+}, {
+  char: '😇',
+  type: 0
+}, {
+  char: '👍',
+  type: 0
+}, {
+  char: '👎',
+  type: 0
+}, {
+  char: '👌',
+  type: 0
+}, {
+  char: '🤞',
+  type: 0
+}, {
+  char: 'A',
+  type: 1
+}, {
+  char: '👋',
+  type: 0
+}, {
+  char: '💪',
+  type: 0
+}, {
+  char: '🐼',
+  type: 0
+}, {
+  char: '🐷',
+  type: 0
+}, {
+  char: '🐽',
+  type: 0
+}, {
+  char: '🌻',
+  type: 0
+}, {
+  char: '❤️',
+  type: 0
+}, {
+  char: '🙊',
+  type: 0
+}, {
+  char: '🙉',
+  type: 0
+}, {
+  char: '🙈',
+  type: 0
+}, {
+  char: ' ',
+  type: 0
+}];
+var _default = [characters, emojis];
 exports.default = _default;
 },{}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -28360,13 +28607,14 @@ function Display(_ref2) {
 
 function Key(_ref3) {
   var char = _ref3.char,
+      type = _ref3.type,
       clickHandler = _ref3.clickHandler,
-      props = _objectWithoutProperties(_ref3, ["char", "clickHandler"]);
+      props = _objectWithoutProperties(_ref3, ["char", "type", "clickHandler"]);
 
   return _react.default.createElement("div", {
     className: "key",
     onClick: function onClick() {
-      return clickHandler(char);
+      return clickHandler(char, type);
     }
   }, char);
 }
@@ -28375,29 +28623,36 @@ function KeyBoard(_ref4) {
   var chars = _ref4.chars,
       props = _objectWithoutProperties(_ref4, ["chars"]);
 
-  function handleClick(char) {
-    ws.send(JSON.stringify({
-      action: 'insert',
-      data: char
-    }));
+  var _React$useState3 = _react.default.useState(0),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      layout = _React$useState4[0],
+      setLayout = _React$useState4[1];
+
+  function handleClick(char, type) {
+    if (type === 1) {
+      setLayout(Number(!layout));
+    } else {
+      ws.send(JSON.stringify({
+        action: 'insert',
+        data: char
+      }));
+    }
   }
 
-  var rows = chars.map(function (row, i) {
-    var r = row.map(function (char) {
-      return _react.default.createElement(Key, {
-        char: char,
-        key: char,
-        clickHandler: handleClick
-      });
+  var keyElements = _keyboards.default[layout].map(function (c) {
+    return _react.default.createElement(Key, {
+      char: c.char,
+      key: c.char,
+      type: c.type,
+      clickHandler: handleClick
     });
-    return _react.default.createElement("div", {
-      className: "row",
-      key: "row-".concat(i)
-    }, " ", r, " ");
   });
+
   return _react.default.createElement("div", {
     className: "keyboard"
-  }, rows);
+  }, _react.default.createElement("div", {
+    className: "keyboard-wrapper"
+  }, keyElements));
 }
 
 function App(props) {
@@ -28405,9 +28660,7 @@ function App(props) {
     className: "wrapper"
   }, _react.default.createElement(Display, {
     str: "..."
-  }), _react.default.createElement(KeyBoard, {
-    chars: _keyboards.default
-  }), _react.default.createElement(Delete, {
+  }), _react.default.createElement(KeyBoard, null), _react.default.createElement(Delete, {
     str: "delete"
   }));
 }
@@ -28441,7 +28694,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54096" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

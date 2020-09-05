@@ -21,63 +21,70 @@ body {
   background-size: 0.8vh 0.8vh;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+}
+
 .display {
   background-color: white;
   box-shadow: inset 0 0 10px -2px rgba(0, 0, 0, 0.5);
   font-family: monospace;
   text-align: center;
-  margin: 5vh 10vw 10vh;
-  font-size: 2rem;
+  margin: 0.5rem;
+  font-size: 2.4rem;
+  padding: 1rem;
+  grid-column-start: 2;
+  grid-column-end: 10;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.keyboard {
+  grid-row-start: 3;
+  grid-row-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 11;
   padding: 1rem;
 }
 
-.row {
-  width: 100vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.keyboard-wrapper {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  gap: 3vw;
+  width: 100%;
+  height: 100%;
 }
 
-.row:nth-child(1) .key {
-  background-color: #f7f7a8;
+.key:nth-child(-n+50) {
+  background-color: #ada8f7;
 }
 
-.row:nth-child(2) {
-  width: 98vw;
-  margin: 0 1vw;
-}
-.row:nth-child(2) .key {
-  background-color: #f7c5a8;
-}
-
-.row:nth-child(3) {
-  width: 96vw;
-  margin: 0 2vw;
-}
-.row:nth-child(3) .key {
-  background-color: #ffaebb;
-}
-
-.row:nth-child(4) {
-  width: 94vw;
-  margin: 0 3vw;
-}
-.row:nth-child(4) .key {
+.key:nth-child(-n+40) {
   background-color: #f4a8f7;
 }
 
-.row:nth-child(5) {
-  width: 92vw;
-  margin: 0 4vw;
+.key:nth-child(-n+30) {
+  background-color: #ffaebb;
 }
-.row:nth-child(5) .key {
-  background-color: #ada8f7;
+
+.key:nth-child(-n+20) {
+  background-color: #f7c5a8;
+}
+
+.key:nth-child(-n+10) {
+  background-color: #f7f7a8;
 }
 
 .key {
   font-size: 1.5rem;
-  width: 6vw;
-  height: 6vw;
+  width: 100%;
+  height: 100%;
   margin: 0.3vw;
   font-family: sans-serif;
   display: flex;
@@ -98,6 +105,12 @@ body {
   box-shadow: inset 0 0 2px 0px #000001;
 }
 
+.key:last-child {
+  grid-column-start: 1;
+  grid-column-end: 11;
+  border-radius: 0;
+}
+
 .delete.key {
   position: absolute;
   bottom: 0;
@@ -106,6 +119,7 @@ body {
   padding: 1rem;
   height: 6vh;
   background-color: #d65a5a;
+  border-radius: 0;
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */

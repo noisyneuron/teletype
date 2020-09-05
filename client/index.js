@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import AllKeys from "./keyboards.js"
+import KeyBoardLayouts from "./keyboards.js"
 
 const ws = new WebSocket('ws://' + location.host);
 
@@ -27,36 +27,45 @@ function Display({str,...props}) {
   return (<div className="display"> {txt} </div>)
 }
 
-function Key({char, clickHandler, ...props}) {
+function Key({char, type, clickHandler, ...props}) {
   return (
-    <div className="key" onClick={() => clickHandler(char)}>
+    <div className="key" onClick={() => clickHandler(char, type)}>
       {char}
     </div>
   )
 }
 
 function KeyBoard({chars,...props}) {
-  function handleClick(char) {
-    ws.send(JSON.stringify({
-      action: 'insert',
-      data: char
-    }));
+
+  let [layout, setLayout] = React.useState(0) 
+
+  function handleClick(char, type) {
+    if(type === 1) {
+      setLayout(Number(!layout))
+    } else {
+      ws.send(JSON.stringify({
+        action: 'insert',
+        data: char
+      }));
+    }
   }
 
-  const rows = chars.map( (row,i) => {
-    const r = row.map( char => {
-      return (
-        <Key char={char} key={char} clickHandler={handleClick} />
-      )
-    })
+  const keyElements = KeyBoardLayouts[layout].map(c => {
     return (
-      <div className="row" key={`row-${i}`}> {r} </div>
+      <Key 
+        char={c.char} 
+        key={c.char} 
+        type={c.type}
+        clickHandler={handleClick} 
+      />
     )
   })
 
   return (
     <div className="keyboard">
-      {rows}
+      <div className="keyboard-wrapper">
+        {keyElements}
+      </div>
     </div>
   )
 }
@@ -65,7 +74,7 @@ function App(props) {
   return(
     <div className="wrapper">
       <Display str={"..."} />
-      <KeyBoard chars={AllKeys} />
+      <KeyBoard/>
       <Delete str={"delete"} />
     </div>
   )
