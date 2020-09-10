@@ -28293,34 +28293,34 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var characters = [{
-  char: '1',
+  char: '🐼',
   type: 0
 }, {
-  char: '2',
+  char: '🐷',
   type: 0
 }, {
-  char: '3',
+  char: '❤️',
   type: 0
 }, {
-  char: '4',
+  char: '🙂',
   type: 0
 }, {
-  char: '5',
+  char: '🤗',
   type: 0
 }, {
-  char: '6',
+  char: '😜',
   type: 0
 }, {
-  char: '7',
+  char: '👍',
   type: 0
 }, {
-  char: '8',
+  char: '👎',
   type: 0
 }, {
-  char: '9',
+  char: '👌',
   type: 0
 }, {
-  char: '0',
+  char: '🤞',
   type: 0
 }, {
   char: 'q',
@@ -28566,6 +28566,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var ws = new WebSocket('ws://' + location.host);
+var DEBOUNCE_DURATION = 450;
 
 ws.onopen = function () {
   console.log('WebSocket Client Connected');
@@ -28575,10 +28576,21 @@ function Delete(_ref) {
   var str = _ref.str,
       props = _objectWithoutProperties(_ref, ["str"]);
 
+  var _React$useState = _react.default.useState(true),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      active = _React$useState2[0],
+      setActive = _React$useState2[1];
+
   function handleClick() {
-    ws.send(JSON.stringify({
-      action: 'delete'
-    }));
+    if (active) {
+      setActive(false);
+      setTimeout(function () {
+        setActive(true);
+      }, DEBOUNCE_DURATION / 2);
+      ws.send(JSON.stringify({
+        action: 'delete'
+      }));
+    }
   }
 
   return _react.default.createElement("div", {
@@ -28591,10 +28603,10 @@ function Display(_ref2) {
   var str = _ref2.str,
       props = _objectWithoutProperties(_ref2, ["str"]);
 
-  var _React$useState = _react.default.useState(str),
-      _React$useState2 = _slicedToArray(_React$useState, 2),
-      txt = _React$useState2[0],
-      setTxt = _React$useState2[1];
+  var _React$useState3 = _react.default.useState(str),
+      _React$useState4 = _slicedToArray(_React$useState3, 2),
+      txt = _React$useState4[0],
+      setTxt = _React$useState4[1];
 
   ws.onmessage = function (e) {
     setTxt(e.data);
@@ -28611,11 +28623,24 @@ function Key(_ref3) {
       clickHandler = _ref3.clickHandler,
       props = _objectWithoutProperties(_ref3, ["char", "type", "clickHandler"]);
 
+  var _React$useState5 = _react.default.useState(true),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      active = _React$useState6[0],
+      setActive = _React$useState6[1];
+
+  function handleClick() {
+    if (active) {
+      setActive(false);
+      setTimeout(function () {
+        setActive(true);
+      }, DEBOUNCE_DURATION);
+      clickHandler(char, type);
+    }
+  }
+
   return _react.default.createElement("div", {
     className: "key",
-    onClick: function onClick() {
-      return clickHandler(char, type);
-    }
+    onClick: handleClick
   }, char);
 }
 
@@ -28623,10 +28648,10 @@ function KeyBoard(_ref4) {
   var chars = _ref4.chars,
       props = _objectWithoutProperties(_ref4, ["chars"]);
 
-  var _React$useState3 = _react.default.useState(0),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      layout = _React$useState4[0],
-      setLayout = _React$useState4[1];
+  var _React$useState7 = _react.default.useState(0),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      layout = _React$useState8[0],
+      setLayout = _React$useState8[1];
 
   function handleClick(char, type) {
     if (type === 1) {
@@ -28694,7 +28719,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62645" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52821" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

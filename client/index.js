@@ -3,15 +3,23 @@ import ReactDOM from "react-dom"
 import KeyBoardLayouts from "./keyboards.js"
 
 const ws = new WebSocket('ws://' + location.host);
+const DEBOUNCE_DURATION = 450
 
 ws.onopen = function() {
   console.log('WebSocket Client Connected');
 };
 
 function Delete({ str, ...props }) {
+  let [active, setActive] = React.useState(true)
 
   function handleClick() {
-    ws.send(JSON.stringify({action: 'delete'}))
+    if (active) {
+      setActive(false)
+      setTimeout(() => {
+        setActive(true)
+      }, DEBOUNCE_DURATION/2)
+      ws.send(JSON.stringify({ action: 'delete' }))
+    }
   }
 
   return (<div className="delete key" onClick={handleClick}> {str} </div>)
@@ -28,8 +36,20 @@ function Display({str,...props}) {
 }
 
 function Key({char, type, clickHandler, ...props}) {
+  let [active, setActive] = React.useState(true) 
+
+  function handleClick() {
+    if(active) {
+      setActive(false)
+      setTimeout( () => {
+        setActive(true)
+      }, DEBOUNCE_DURATION)
+      clickHandler(char, type)
+    }
+  }
+
   return (
-    <div className="key" onClick={() => clickHandler(char, type)}>
+    <div className="key" onClick={handleClick}>
       {char}
     </div>
   )
@@ -41,7 +61,7 @@ function KeyBoard({chars,...props}) {
 
   function handleClick(char, type) {
     if(type === 1) {
-      setLayout(Number(!layout))
+      setLayout(Number(!layout))  
     } else {
       ws.send(JSON.stringify({
         action: 'insert',
